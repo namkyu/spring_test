@@ -27,6 +27,7 @@ public class XstreamTest {
 	@Test
 	public void specDescription() throws Exception {
 		XStream xStream = new XStream();
+		xStream.setMode(XStream.ID_REFERENCES);
 		xStream.processAnnotations(Games.class);
 
 		FileInputStream is = new FileInputStream("E:\\test\\xstream\\test.xml");
@@ -39,9 +40,13 @@ public class XstreamTest {
 	@Test
 	public void autoDetectTest() {
 		XStream xStream = new XStream();
+		xStream.setMode(XStream.SINGLE_NODE_XPATH_ABSOLUTE_REFERENCES);
 		xStream.autodetectAnnotations(true);
 		RendezvousMessage msg = new RendezvousMessage(15, 111, "kyu", "Y", "a", "b");
-		System.out.println(xStream.toXML(msg));
+		String result = xStream.toXML(msg);
+
+		String replaceResult = result.replaceAll("(>+)(\n|\r)[ ]+", "$1");
+		System.out.println(replaceResult);
 	}
 
 }
