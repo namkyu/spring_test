@@ -19,7 +19,8 @@
 		<constructor-arg index="0" value="namkyu" />
 	</bean>
 
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	<bean id="reloadableResourceBundleMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+<!-- 		<property name="defaultEncoding" value="ISO-8859-1" /> -->
 		<property name="defaultEncoding" value="UTF-8" />
         <property name="cacheSeconds">
             <value>3</value>
@@ -28,6 +29,12 @@
             <list>
                 <value>classpath:locale/messages</value>
             </list>
+        </property>
+    </bean>
+
+    <bean id="resourceBundleMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename">
+            <value>locale/messages</value>
         </property>
     </bean>
 

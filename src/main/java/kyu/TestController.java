@@ -1,7 +1,11 @@
 package kyu;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,9 +20,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
+	@Autowired
+    private MessageSource reloadableResourceBundleMessageSource;
+
+	@Autowired
+    private MessageSource resourceBundleMessageSource;
+
 	@RequestMapping("/properties/test")
 	@ResponseBody
-	public void propertiesTest(ModelAndView mav, HttpServletRequest request) throws Exception {
-		System.out.println("test");
+	public String propertiesTest(ModelAndView mav, HttpServletRequest request) throws Exception {
+		StringBuilder builder = new StringBuilder();
+		builder.append(reloadableResourceBundleMessageSource.getMessage("test", null, new Locale("kr")) + "\n");
+		builder.append(resourceBundleMessageSource.getMessage("test", null, new Locale("kr")) + "\n");
+		return builder.toString();
 	}
 }
