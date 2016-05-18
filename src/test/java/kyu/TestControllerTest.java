@@ -40,7 +40,7 @@ public class TestControllerTest {
 	}
 
 	@Test
-	public void mockMvcTedst() throws Exception {
+	public void MockMvc이용해서콘트롤러테스트() throws Exception {
 		MvcResult result = mockMvc.perform(get("/properties/test1").accept(MediaType.TEXT_HTML))
 								.andDo(print())
 								.andExpect(status().isOk())

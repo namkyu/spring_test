@@ -1,5 +1,8 @@
 package spring.spel;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,14 +22,13 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 public class SPELTest {
 
 	@Test
-	public void test() {
-		System.out.println(parse("'SPEL'"));
-		System.out.println(parse("'test'.concat('11')"));
-		System.out.println(parse("new String('test').toUpperCase()"));
-		System.out.println(parse("null == null"));
-		System.out.println(parse("new String('test') == null"));
+	public void 스프링SPEL테스트() {
+		assertThat("SPEL", is(parse("'SPEL'")));
+		assertThat("test11", is(parse("'test'.concat('11')")));
+		assertThat("TEST", is(parse("new String('test').toUpperCase()")));
+		assertThat(true, is(parse("null == null")));
+		assertThat(false, is(parse("new String('test') == null")));
 	}
-
 
 	private Object parse(String value) {
 		ExpressionParser parser = new SpelExpressionParser();
@@ -36,7 +38,7 @@ public class SPELTest {
 	}
 
 	@Test
-	public void test2() {
+	public void 스프링SPEL테스트_MAP() {
 		ExpressionParser expressionParser = new SpelExpressionParser();
 		StandardEvaluationContext evaluationContext = new StandardEvaluationContext();
 
@@ -47,11 +49,11 @@ public class SPELTest {
 
 		Expression defaultExpression = expressionParser.parseExpression("#loginId + #question1");
 		Object result = defaultExpression.getValue(evaluationContext);
-		System.out.println(result);
+		assertThat(246, is(result));
 	}
 
 	@Test
-	public void test3() {
+	public void 스프링SPEL테스트_멤버변수접근() {
 		ExpressionParser expressionParser = new SpelExpressionParser();
 		StandardEvaluationContext evaluationContext = new StandardEvaluationContext();
 
@@ -63,9 +65,8 @@ public class SPELTest {
 		map.put("result", member);
 
 		evaluationContext.setVariables(map);
-
 		Expression defaultExpression = expressionParser.parseExpression("#result.a");
 		Object result = defaultExpression.getValue(evaluationContext);
-		System.out.println(result);
+		assertThat("a", is(result));
 	}
 }
