@@ -42,8 +42,8 @@ public class TestControllerTest {
 	@Test
 	public void MockMvc이용해서콘트롤러테스트() throws Exception {
 		MvcResult result = mockMvc.perform(get("/properties/test1").accept(MediaType.TEXT_HTML))
-								.andDo(print())
-								.andExpect(status().isOk())
+								.andDo(print()) // 로그 출력
+								.andExpect(status().isOk()) // HTTP Response status 200 체크
 								.andReturn();
 		String body = result.getResponse().getContentAsString();
 		String message = reloadableResourceBundleMessageSource.getMessage("test", null, new Locale("kr"));
