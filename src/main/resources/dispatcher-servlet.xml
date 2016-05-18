@@ -29,4 +29,17 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
+	<!-- ============================================================= -->
+	<!-- Resource bundle -->
+	<!-- ============================================================= -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="5" />
+		<property name="basenames">
+			<list>
+				<value>classpath:locale/messages</value>
+			</list>
+		</property>
+	</bean>
+
 </beans>

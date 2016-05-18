@@ -54,7 +54,7 @@ public class RegisterBean {
 		assertThat("method2", is(test.method2()));
 
 		String namkyu = context.getBean("namkyu", String.class);
-		assertThat("test_namkyu", is(namkyu));
+		assertThat("namkyu", is(namkyu));
 	}
 }
 

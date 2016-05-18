@@ -26,12 +26,19 @@ public class TestController {
 	@Autowired
     private MessageSource resourceBundleMessageSource;
 
-	@RequestMapping("/properties/test")
+	@RequestMapping("/properties/test1")
 	@ResponseBody
-	public String propertiesTest(ModelAndView mav, HttpServletRequest request) throws Exception {
+	public String propertiesTest1(ModelAndView mav, HttpServletRequest request) throws Exception {
 		StringBuilder builder = new StringBuilder();
-		builder.append(reloadableResourceBundleMessageSource.getMessage("test", null, new Locale("kr")) + "\n");
-		builder.append(resourceBundleMessageSource.getMessage("test", null, new Locale("kr")) + "\n");
+		builder.append(reloadableResourceBundleMessageSource.getMessage("test", null, new Locale("kr")));
+		return builder.toString();
+	}
+
+	@RequestMapping("/properties/test2")
+	@ResponseBody
+	public String propertiesTest2(ModelAndView mav, HttpServletRequest request) throws Exception {
+		StringBuilder builder = new StringBuilder();
+		builder.append(resourceBundleMessageSource.getMessage("test", null, new Locale("kr")));
 		return builder.toString();
 	}
 }

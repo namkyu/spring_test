@@ -19,10 +19,6 @@ public class SpringBeanLoadingTest {
 
 	@Test
 	public void test() {
-		// src/main/resource/spring.xml
-//		assertThat(namkyu, is("namkyu"));
-
-		// src/test/resource/spring.xml
-		assertThat(namkyu, is("test_namkyu"));
+		assertThat(namkyu, is("namkyu"));
 	}
 }
