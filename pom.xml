@@ -126,17 +126,6 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.jolbox</groupId> -->
-<!-- 			<artifactId>bonecp</artifactId> -->
-<!-- 			<version>0.8.0.RELEASE</version> -->
-<!-- 		</dependency> -->
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.jolbox</groupId> -->
-<!-- 			<artifactId>bonecp-spring</artifactId> -->
-<!-- 			<version>0.8.0.RELEASE</version> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
